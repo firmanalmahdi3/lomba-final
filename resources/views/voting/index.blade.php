@@ -13,10 +13,6 @@
     <div class="relative max-w-3xl mx-auto px-6">
         <h1 class="font-display text-white text-5xl font-black mb-3">🗳️ Halaman Voting</h1>
         <p class="text-white/85 text-lg mb-4">Pilih peserta favoritmu dan berikan dukunganmu!</p>
-        <div class="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-5 py-2 rounded-full text-sm font-semibold">
-            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-            Voting sedang berlangsung — 12 hari tersisa
-        </div>
     </div>
 </section>
 
@@ -29,13 +25,6 @@
                 di kategori terpilih
             @endif
         </p>
-        <div class="flex items-center gap-4">
-            <span class="text-sm text-gray-500">Total suara: <strong class="text-orange-600">{{ number_format($totalVotes) }}</strong></span>
-            <a href="{{ route('voting.leaderboard') }}"
-               class="text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors">
-                🏆 Lihat Leaderboard →
-            </a>
-        </div>
     </div>
 </div>
 

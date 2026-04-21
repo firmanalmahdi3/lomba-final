@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Beranda — Festival Lampung')
+@section('title', 'Beranda — Festival Film Pendek Blitar')
 
 @section('content')
 
@@ -15,15 +15,13 @@
     <div class="relative max-w-4xl mx-auto px-6">
         <span class="inline-block bg-orange-500/25 border border-orange-400/50 text-orange-200
                      text-xs font-bold tracking-widest uppercase px-5 py-2 rounded-full mb-6">
-            ✦ Festival Budaya 2025
+            ✦ Festival Lomba Film Pendek ✦
         </span>
         <h1 class="font-display text-white text-5xl md:text-6xl font-black leading-tight mb-4 drop-shadow-lg">
-            Festival <span class="text-orange-200">Lampung</span><br>
-            Seni &amp; Budaya Nusantara
+            Festival Film Pendek <span class="text-orange-200">Blitar</span>
         </h1>
         <p class="text-white/80 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-            Rayakan keindahan seni dan budaya Lampung bersama kami. Dukung peserta favoritmu
-            dan jadilah bagian dari perayaan terbesar tahun ini!
+           Dukung peserta favoritmu
         </p>
         <div class="flex gap-3 justify-center flex-wrap">
             <a href="{{ route('voting.index') }}"
@@ -37,26 +35,6 @@
         </div>
     </div>
 </section>
-
-{{-- STATS BAR --}}
-<div class="bg-white border-b border-orange-100 shadow-sm">
-    <div class="max-w-5xl mx-auto px-6 py-6 flex justify-center gap-16 flex-wrap">
-        @php $statItems = [
-            [$stats['total_votes'],      'Total Suara'],
-            [$stats['total_candidates'], 'Peserta'],
-            [$stats['total_categories'], 'Kategori'],
-            [$stats['days_remaining'],   'Hari Tersisa'],
-        ] @endphp
-        @foreach($statItems as [$num, $label])
-        <div class="text-center">
-            <div class="font-display text-3xl font-black text-orange-500">
-                {{ number_format($num) }}
-            </div>
-            <div class="text-xs text-gray-500 font-semibold mt-1 uppercase tracking-wide">{{ $label }}</div>
-        </div>
-        @endforeach
-    </div>
-</div>
 
 {{-- FITUR --}}
 <section class="max-w-6xl mx-auto px-6 py-20">

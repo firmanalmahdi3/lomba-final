@@ -7,7 +7,7 @@
             <a href="{{ route('home') }}" class="flex items-center gap-2">
                 <span class="text-2xl">🎭</span>
                 <span class="font-display text-white font-black text-xl tracking-tight">
-                    Festival<span class="text-orange-200">Lampung</span>
+                    Festival Film Pendek <span class="text-orange-200">Blitar</span>
                 </span>
             </a>
 
@@ -15,10 +15,9 @@
             <div class="hidden md:flex items-center gap-1">
                 @php
                     $navLinks = [
-                        'home'             => 'Beranda',
+                        'home'             => 'Home',
                         'about'            => 'About Us',
                         'voting.index'     => 'Voting',
-                        'voting.leaderboard' => 'Leaderboard',
                     ];
                 @endphp
                 @foreach($navLinks as $route => $label)

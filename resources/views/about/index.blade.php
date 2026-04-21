@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About Us — Festival Lampung')
+@section('title', 'About Us — Festival Film Pendek Blitar')
 
 @section('content')
 
@@ -41,11 +41,11 @@
             </h3>
             <ul class="space-y-3">
                 @php $tujuan = [
-                    'Melestarikan dan mengembangkan seni budaya asli Lampung agar tidak punah',
-                    'Memberikan ruang apresiasi bagi seniman dan budayawan lokal',
-                    'Meningkatkan pariwisata budaya dan ekonomi kreatif daerah',
-                    'Menumbuhkan rasa bangga dan cinta terhadap warisan leluhur',
-                    'Mempererat persatuan masyarakat Lampung yang beragam',
+                    'Memberikan ruang apresiasi dan wadah ekspresi bagi kreativitas masyarakat, pelajar, dan Kelompok Informasi Masyarakat (KIM).',
+                    'Memperkuat penyebaran narasi positif terkait pembangunan Kota Blitar.',
+                    'Meningkatkan literasi digital serta mendorong produksi konten yang informatif, edukatif, dan bertanggung jawab.',
+                    'Meningkatkan literasi digital serta mendorong produksi konten yang informatif, edukatif, dan bertanggung jawab.',
+                    'Memperluas jejaring kemitraan pemerintah daerah dalam mendukung diseminasi informasi kepada publik.',
                 ] @endphp
                 @foreach($tujuan as $item)
                 <li class="flex items-start gap-3 text-sm text-gray-500">
@@ -63,11 +63,9 @@
             </h3>
             <ul class="space-y-3">
                 @php $sasaran = [
-                    'Seniman dan pengrajin budaya dari 15 kabupaten/kota di Lampung',
-                    'Pelajar dan generasi muda sebagai penerus kebudayaan',
-                    'Komunitas seni dan sanggar tari tradisional',
-                    'Wisatawan lokal dan mancanegara',
-                    'Pelaku usaha ekonomi kreatif dan UMKM',
+                    'Masyarakat umum',
+                    'Pelajar',
+                    'dan KIM di Kota Blitar',
                 ] @endphp
                 @foreach($sasaran as $item)
                 <li class="flex items-start gap-3 text-sm text-gray-500">
@@ -85,12 +83,9 @@
             </h3>
             <ul class="space-y-3">
                 @php $ruangLingkup = [
-                    'Tari tradisional dan kontemporer berbasis budaya Lampung',
-                    'Musik daerah: gamolan, serdam, dan alat musik khas Lampung',
-                    'Kerajinan tangan: tenun tapis, anyaman, ukiran kayu',
-                    'Kuliner tradisional dan festival makanan khas daerah',
-                    'Pertunjukan teater dan drama budaya kolosal',
-                    'Pameran fotografi dan seni visual bertema budaya',
+                    'Karya: Film pendek naratif durasi 5–10 menit, tema sesuai pembangunan daerah.',
+                    'Tujuan: Memberikan ruang apresiasi dan edukasi bagi peserta, sekaligus membangun konten komunikasi publik berkualitas.',
+                    'Mitra/Stakeholder : Pelaku Sineas Film, Disbudpar, Perpus Bung Karno, Blitar Art Center',
                 ] @endphp
                 @foreach($ruangLingkup as $item)
                 <li class="flex items-start gap-3 text-sm text-gray-500">
@@ -103,40 +98,4 @@
 
     </div>
 </section>
-
-{{-- TIMELINE --}}
-<section class="bg-white border-y border-orange-100 py-16">
-    <div class="max-w-4xl mx-auto px-6">
-        <div class="text-center mb-12">
-            <span class="inline-block bg-orange-100 text-orange-700 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-3">
-                Perjalanan Kami
-            </span>
-            <h2 class="font-display text-4xl font-black text-gray-900">Sejarah Festival</h2>
-        </div>
-        <div class="space-y-6">
-            @php $timeline = [
-                ['2010', 'Pendirian',          'Festival Lampung pertama kali diselenggarakan dengan 50 peserta dari 5 kabupaten.'],
-                ['2015', 'Ekspansi Regional',  'Festival berkembang mencakup seluruh 15 kabupaten/kota di Provinsi Lampung.'],
-                ['2019', 'Pengakuan Nasional', 'Festival Lampung mendapat pengakuan dari Kementerian Pariwisata sebagai festival budaya unggulan.'],
-                ['2023', 'Era Digital',        'Sistem voting online diluncurkan, memungkinkan masyarakat berpartisipasi dari seluruh Indonesia.'],
-                ['2025', 'Festival ke-15',     'Perayaan emas 15 tahun dengan 24 peserta terbaik dari seluruh Lampung.'],
-            ] @endphp
-            @foreach($timeline as [$year, $title, $desc])
-            <div class="flex gap-6 items-start">
-                <div class="flex-shrink-0 w-20 text-right">
-                    <span class="font-display font-black text-orange-500 text-xl">{{ $year }}</span>
-                </div>
-                <div class="w-px bg-orange-200 self-stretch relative">
-                    <div class="absolute top-1.5 -left-1.5 w-3 h-3 rounded-full bg-orange-500"></div>
-                </div>
-                <div class="pb-6">
-                    <h4 class="font-bold text-gray-900 mb-1">{{ $title }}</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed">{{ $desc }}</p>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
 @endsection
