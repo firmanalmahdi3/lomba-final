@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Voting — Festival Lampung')
+@section('title', 'Voting — Festival Film Pendek Blitar')
 
 @section('content')
 
 {{-- HERO --}}
 <section class="py-16 text-center relative overflow-hidden"
-         style="background: linear-gradient(135deg, #C2410C 0%, #F97316 100%)">
+         style="background: #00bdd7;">
     <div class="absolute inset-0 opacity-5"
          style="background-image: url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10v20c5.5 0 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E\")">
     </div>
     <div class="relative max-w-3xl mx-auto px-6">
-        <h1 class="font-display text-white text-5xl font-black mb-3">🗳️ Halaman Voting</h1>
-        <p class="text-white/85 text-lg mb-4">Pilih peserta favoritmu dan berikan dukunganmu!</p>
+        <h1 class="font-display text-white text-5xl font-black mb-3">Halaman Voting</h1>
+        <p class="text-white text-lg mb-4">Pilih peserta favoritmu dan berikan dukunganmu!</p>
     </div>
 </section>
 
@@ -28,7 +28,7 @@
     </div>
 </div>
 
-{{-- FILTER & SORT --}}
+{{-- FILTER --}}
 <div class="max-w-6xl mx-auto px-6 pt-8">
     <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
 
@@ -36,35 +36,200 @@
         <div class="flex flex-wrap gap-2">
             <a href="{{ route('voting.index') }}"
                class="px-5 py-2 rounded-full text-sm font-semibold border-2 transition-all duration-200
-                      {{ !$categoryId ? 'bg-orange-500 text-white border-orange-500' : 'bg-white text-gray-500 border-gray-200 hover:border-orange-400 hover:text-orange-600' }}">
+                      {{ !$categoryId ? 'bg-[#ed8036] text-white border-[#ed8036]' : 'bg-white text-gray-500 border-gray-200 hover:border-[#ed8036] hover:[#ed8036]' }}">
                 Semua
             </a>
             @foreach($categories as $cat)
             <a href="{{ route('voting.index', ['category' => $cat->id, 'sort' => $sort]) }}"
                class="px-5 py-2 rounded-full text-sm font-semibold border-2 transition-all duration-200
-                      {{ $categoryId == $cat->id ? 'bg-orange-500 text-white border-orange-500' : 'bg-white text-gray-500 border-gray-200 hover:border-orange-400 hover:text-orange-600' }}">
+                      {{ $categoryId == $cat->id ? 'bg-[#ed8036] text-white border-[#ed8036]' : 'bg-white text-gray-500 border-gray-200 hover:border-[#ed8036] hover:text-[#ed8036]' }}">
                 {{ $cat->icon }} {{ $cat->name }}
             </a>
             @endforeach
         </div>
 
-        {{-- Sort --}}
-        <div class="flex items-center gap-2">
-            <span class="text-sm text-gray-400">Urutkan:</span>
-            <a href="{{ route('voting.index', ['category' => $categoryId, 'sort' => 'votes']) }}"
-               class="px-4 py-1.5 rounded-lg text-sm font-semibold border transition-all
-                      {{ $sort !== 'name' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-500 border-gray-200 hover:border-blue-400' }}">
-                Suara Terbanyak
-            </a>
-            <a href="{{ route('voting.index', ['category' => $categoryId, 'sort' => 'name']) }}"
-               class="px-4 py-1.5 rounded-lg text-sm font-semibold border transition-all
-                      {{ $sort === 'name' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-500 border-gray-200 hover:border-blue-400' }}">
-                Nama A–Z
-            </a>
-        </div>
+{{-- GRID KANDIDAT CONTOH --}}
+{{-- Thumbnail YouTube --}}
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+    <div class="text-center">
+        <h2 class="text-lg font-bold mb-4">Video 1</h2>
+
+        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
+
+            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
+                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
+                        rounded-lg opacity-0 group-hover:opacity-100 transition">
+                <span class="text-white font-semibold text-sm">
+                    ▶ Tonton Video Ini
+                </span>
+            </div>
+        </a>
+
+        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
+            🗳️ Vote
+        </button>
     </div>
 
-    {{-- GRID KANDIDAT --}}
+    <div class="text-center">
+        <h2 class="text-lg font-bold mb-4">Video 1</h2>
+
+        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
+
+            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
+                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
+                        rounded-lg opacity-0 group-hover:opacity-100 transition">
+                <span class="text-white font-semibold text-sm">
+                    ▶ Tonton Video Ini
+                </span>
+            </div>
+        </a>
+
+        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
+            🗳️ Vote
+        </button>
+    </div>
+
+    <div class="text-center">
+        <h2 class="text-lg font-bold mb-4">Video 1</h2>
+
+        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
+
+            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
+                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
+                        rounded-lg opacity-0 group-hover:opacity-100 transition">
+                <span class="text-white font-semibold text-sm">
+                    ▶ Tonton Video Ini
+                </span>
+            </div>
+        </a>
+
+        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
+            🗳️ Vote
+        </button>
+    </div>
+
+    <div class="text-center">
+        <h2 class="text-lg font-bold mb-4">Video 1</h2>
+
+        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
+
+            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
+                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
+                        rounded-lg opacity-0 group-hover:opacity-100 transition">
+                <span class="text-white font-semibold text-sm">
+                    ▶ Tonton Video Ini
+                </span>
+            </div>
+        </a>
+
+        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
+            🗳️ Vote
+        </button>
+    </div>
+
+    <div class="text-center">
+        <h2 class="text-lg font-bold mb-4">Video 1</h2>
+
+        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
+
+            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
+                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
+                        rounded-lg opacity-0 group-hover:opacity-100 transition">
+                <span class="text-white font-semibold text-sm">
+                    ▶ Tonton Video Ini
+                </span>
+            </div>
+        </a>
+
+        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
+            🗳️ Vote
+        </button>
+    </div>
+
+    <div class="text-center">
+        <h2 class="text-lg font-bold mb-4">Video 1</h2>
+
+        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
+
+            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
+                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
+                        rounded-lg opacity-0 group-hover:opacity-100 transition">
+                <span class="text-white font-semibold text-sm">
+                    ▶ Tonton Video Ini
+                </span>
+            </div>
+        </a>
+
+        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
+            🗳️ Vote
+        </button>
+    </div>
+
+    <div class="text-center">
+        <h2 class="text-lg font-bold mb-4">Video 1</h2>
+
+        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
+
+            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
+                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
+                        rounded-lg opacity-0 group-hover:opacity-100 transition">
+                <span class="text-white font-semibold text-sm">
+                    ▶ Tonton Video Ini
+                </span>
+            </div>
+        </a>
+
+        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
+            🗳️ Vote
+        </button>
+    </div>
+
+    <div class="text-center">
+        <h2 class="text-lg font-bold mb-4">Video 1</h2>
+
+        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
+
+            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
+                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
+                        rounded-lg opacity-0 group-hover:opacity-100 transition">
+                <span class="text-white font-semibold text-sm">
+                    ▶ Tonton Video Ini
+                </span>
+            </div>
+        </a>
+
+        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
+            🗳️ Vote
+        </button>
+    </div>
+    
+</div>
+
     @if($candidates->isEmpty())
         <div class="text-center py-20 text-gray-400">
             <div class="text-6xl mb-4">😔</div>

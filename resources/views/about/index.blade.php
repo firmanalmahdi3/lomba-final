@@ -5,13 +5,10 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="py-20 text-center" style="background: linear-gradient(135deg, #1E3A8A, #1D4ED8)">
+<section class="py-20 text-center" style="background: #00bdd7;">
     <div class="max-w-3xl mx-auto px-6">
-        <span class="inline-block bg-white/15 border border-white/30 text-blue-100 text-xs font-bold tracking-widest uppercase px-5 py-2 rounded-full mb-5">
-            Tentang Kami
-        </span>
         <h1 class="font-display text-white text-5xl font-black mb-3">About Us</h1>
-        <p class="text-white/70 text-lg">Mengenal Festival Lomba Film Pendek Lebih Dalam</p>
+        <p class="text-white text-lg">Mengenal Festival Lomba Film Pendek Lebih Dalam</p>
     </div>
 </section>
 
@@ -20,7 +17,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
         {{-- Latar Belakang --}}
-        <div class="bg-white border border-orange-100 rounded-2xl p-8 border-t-4 border-t-orange-500">
+        <div class="bg-white border border-orange-100 rounded-2xl p-8 border-t-4 border-t-[#ed8036]">
             <h3 class="font-bold text-blue-900 text-xl mb-4 flex items-center gap-2">
                 Latar Belakang
             </h3>
@@ -35,7 +32,7 @@
         </div>
 
         {{-- Tujuan --}}
-        <div class="bg-white border border-orange-100 rounded-2xl p-8 border-t-4 border-t-blue-600">
+        <div class="bg-white border border-orange-100 rounded-2xl p-8 border-t-4 border-t-[#00bdd7]">
             <h3 class="font-bold text-blue-900 text-xl mb-4 flex items-center gap-2">
                 🎯 Tujuan
             </h3>
@@ -57,7 +54,7 @@
         </div>
 
         {{-- Sasaran --}}
-        <div class="bg-white border border-orange-100 rounded-2xl p-8 border-t-4 border-t-orange-500">
+        <div class="bg-white border border-orange-100 rounded-2xl p-8 border-t-4 border-t-[#ed8036]">
             <h3 class="font-bold text-blue-900 text-xl mb-4 flex items-center gap-2">
                 🎪 Sasaran
             </h3>
@@ -77,7 +74,7 @@
         </div>
 
         {{-- Ruang Lingkup --}}
-        <div class="bg-white border border-orange-100 rounded-2xl p-8 border-t-4 border-t-blue-600">
+        <div class="bg-white border border-orange-100 rounded-2xl p-8 border-t-4 border-t-[#00bdd7]">
             <h3 class="font-bold text-blue-900 text-xl mb-4 flex items-center gap-2">
                 🌐 Ruang Lingkup
             </h3>
