@@ -28,287 +28,122 @@
     </div>
 </div>
 
-{{-- FILTER --}}
+{{-- FILTER & GRID --}}
 <div class="max-w-6xl mx-auto px-6 pt-8">
-    <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
 
-        {{-- Filter Kategori --}}
-        <div class="flex flex-wrap gap-2">
-            <a href="{{ route('voting.index') }}"
-               class="px-5 py-2 rounded-full text-sm font-semibold border-2 transition-all duration-200
-                      {{ !$categoryId ? 'bg-[#ed8036] text-white border-[#ed8036]' : 'bg-white text-gray-500 border-gray-200 hover:border-[#ed8036] hover:[#ed8036]' }}">
-                Semua
-            </a>
-            @foreach($categories as $cat)
-            <a href="{{ route('voting.index', ['category' => $cat->id, 'sort' => $sort]) }}"
-               class="px-5 py-2 rounded-full text-sm font-semibold border-2 transition-all duration-200
-                      {{ $categoryId == $cat->id ? 'bg-[#ed8036] text-white border-[#ed8036]' : 'bg-white text-gray-500 border-gray-200 hover:border-[#ed8036] hover:text-[#ed8036]' }}">
-                {{ $cat->icon }} {{ $cat->name }}
-            </a>
-            @endforeach
-        </div>
-
-{{-- GRID KANDIDAT CONTOH --}}
-{{-- Thumbnail YouTube --}}
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-
-    <div class="text-center">
-        <h2 class="text-lg font-bold mb-4">Video 1</h2>
-
-        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
-
-            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
-                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
-
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
-                        rounded-lg opacity-0 group-hover:opacity-100 transition">
-                <span class="text-white font-semibold text-sm">
-                    ▶ Tonton Video Ini
-                </span>
-            </div>
+    {{-- Filter Kategori --}}
+    <div class="flex flex-wrap gap-2 mb-8">
+        <a href="{{ route('voting.index') }}"
+           class="px-5 py-2 rounded-full text-sm font-semibold border-2 transition-all duration-200
+                  {{ !$categoryId ? 'bg-[#ed8036] text-white border-[#ed8036]' : 'bg-white text-gray-500 border-gray-200 hover:border-[#ed8036] hover:text-[#ed8036]' }}">
+            Semua
         </a>
-
-        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
-            🗳️ Vote
-        </button>
+        @foreach($categories as $cat)
+        <a href="{{ route('voting.index', ['category' => $cat->id, 'sort' => $sort]) }}"
+           class="px-5 py-2 rounded-full text-sm font-semibold border-2 transition-all duration-200
+                  {{ $categoryId == $cat->id ? 'bg-[#ed8036] text-white border-[#ed8036]' : 'bg-white text-gray-500 border-gray-200 hover:border-[#ed8036] hover:text-[#ed8036]' }}">
+            {{ $cat->icon }} {{ $cat->name }}
+        </a>
+        @endforeach
     </div>
 
-    <div class="text-center">
-        <h2 class="text-lg font-bold mb-4">Video 1</h2>
-
-        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
-
-            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
-                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
-
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
-                        rounded-lg opacity-0 group-hover:opacity-100 transition">
-                <span class="text-white font-semibold text-sm">
-                    ▶ Tonton Video Ini
-                </span>
-            </div>
-        </a>
-
-        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
-            🗳️ Vote
-        </button>
-    </div>
-
-    <div class="text-center">
-        <h2 class="text-lg font-bold mb-4">Video 1</h2>
-
-        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
-
-            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
-                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
-
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
-                        rounded-lg opacity-0 group-hover:opacity-100 transition">
-                <span class="text-white font-semibold text-sm">
-                    ▶ Tonton Video Ini
-                </span>
-            </div>
-        </a>
-
-        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
-            🗳️ Vote
-        </button>
-    </div>
-
-    <div class="text-center">
-        <h2 class="text-lg font-bold mb-4">Video 1</h2>
-
-        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
-
-            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
-                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
-
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
-                        rounded-lg opacity-0 group-hover:opacity-100 transition">
-                <span class="text-white font-semibold text-sm">
-                    ▶ Tonton Video Ini
-                </span>
-            </div>
-        </a>
-
-        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
-            🗳️ Vote
-        </button>
-    </div>
-
-    <div class="text-center">
-        <h2 class="text-lg font-bold mb-4">Video 1</h2>
-
-        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
-
-            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
-                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
-
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
-                        rounded-lg opacity-0 group-hover:opacity-100 transition">
-                <span class="text-white font-semibold text-sm">
-                    ▶ Tonton Video Ini
-                </span>
-            </div>
-        </a>
-
-        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
-            🗳️ Vote
-        </button>
-    </div>
-
-    <div class="text-center">
-        <h2 class="text-lg font-bold mb-4">Video 1</h2>
-
-        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
-
-            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
-                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
-
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
-                        rounded-lg opacity-0 group-hover:opacity-100 transition">
-                <span class="text-white font-semibold text-sm">
-                    ▶ Tonton Video Ini
-                </span>
-            </div>
-        </a>
-
-        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
-            🗳️ Vote
-        </button>
-    </div>
-
-    <div class="text-center">
-        <h2 class="text-lg font-bold mb-4">Video 1</h2>
-
-        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
-
-            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
-                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
-
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
-                        rounded-lg opacity-0 group-hover:opacity-100 transition">
-                <span class="text-white font-semibold text-sm">
-                    ▶ Tonton Video Ini
-                </span>
-            </div>
-        </a>
-
-        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
-            🗳️ Vote
-        </button>
-    </div>
-
-    <div class="text-center">
-        <h2 class="text-lg font-bold mb-4">Video 1</h2>
-
-        <a href="https://youtu.be/1q9Fg2XPY0M" target="_blank" class="group relative block">
-
-            <img src="https://img.youtube.com/vi/1q9Fg2XPY0M/maxresdefault.jpg"
-                class="w-full h-40 object-cover rounded-lg shadow-lg transition">
-
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/60 flex items-center justify-center 
-                        rounded-lg opacity-0 group-hover:opacity-100 transition">
-                <span class="text-white font-semibold text-sm">
-                    ▶ Tonton Video Ini
-                </span>
-            </div>
-        </a>
-
-        <button class="mt-4 w-full py-2 border-2 border-[#ed8036] text-[#ed8036] rounded-xl hover:bg-[#ed8036] hover:text-white">
-            🗳️ Vote
-        </button>
-    </div>
-    
-</div>
-
+    {{-- GRID KANDIDAT --}}
     @if($candidates->isEmpty())
         <div class="text-center py-20 text-gray-400">
             <div class="text-6xl mb-4">😔</div>
             <p class="font-semibold text-lg">Belum ada peserta di kategori ini.</p>
         </div>
     @else
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         @foreach($candidates as $i => $candidate)
         @php
-            $isVoted    = in_array($candidate->id, $votedIds);
-            $barPct     = $maxVotes > 0 ? round(($candidate->votes / $maxVotes) * 100) : 0;
-            $rankColors = ['bg-amber-400', 'bg-gray-400', 'bg-amber-700'];
-            $rankClass  = $rankColors[$i] ?? 'bg-blue-600';
+            $isVoted   = in_array($candidate->id, $votedIds);
+            $barPct    = $maxVotes > 0 ? round(($candidate->votes / $maxVotes) * 100) : 0;
+
+            // Ekstrak YouTube ID langsung di blade — tidak perlu accessor model
+            $ytUrl    = $candidate->youtube_url ?? null;
+            $ytId     = null;
+            if ($ytUrl) {
+                preg_match(
+                    '/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/',
+                    $ytUrl,
+                    $m
+                );
+                $ytId = $m[1] ?? null;
+            }
+            $thumbUrl = $ytId ? "https://img.youtube.com/vi/{$ytId}/hqdefault.jpg" : null;
         @endphp
-        <div class="bg-white border border-orange-100 rounded-2xl overflow-hidden
-                    hover:-translate-y-1 hover:shadow-2xl transition-all duration-200 animate-fade-in"
-             style="animation-delay: {{ $i * 40 }}ms">
 
-            {{-- Thumbnail --}}
-            <div class="h-44 flex items-center justify-center text-6xl relative"
-                 style="background: {{ $candidate->bg_color }}">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-200">
 
-                @if($candidate->photo)
-                    <img src="{{ asset('storage/' . $candidate->photo) }}"
-                         alt="{{ $candidate->name }}"
-                         class="w-full h-full object-cover">
+            {{-- Thumbnail YouTube --}}
+            <div class="relative">
+                @if($thumbUrl)
+                    <a href="{{ $ytUrl }}" target="_blank" class="group relative block">
+                        <img src="{{ $thumbUrl }}"
+                             alt="{{ $candidate->name }}"
+                             class="w-full h-44 object-cover">
+                        {{-- Overlay play --}}
+                        <div class="absolute inset-0 bg-black/60 flex items-center justify-center
+                                    opacity-0 group-hover:opacity-100 transition duration-200">
+                            <span class="text-white font-semibold text-sm flex items-center gap-2">
+                                ▶ Tonton Video Ini
+                            </span>
+                        </div>
+                        {{-- Icon YouTube sudut kanan bawah --}}
+                        <span class="absolute bottom-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded">
+                            ▶ YouTube
+                        </span>
+                    </a>
                 @else
-                    <span>{{ $candidate->emoji }}</span>
+                    {{-- Fallback jika belum ada link YouTube --}}
+                    <div class="w-full h-44 flex items-center justify-center bg-gray-100 text-gray-400">
+                        <div class="text-center">
+                            <div class="text-4xl mb-1">🎬</div>
+                            <p class="text-xs">Video belum tersedia</p>
+                        </div>
+                    </div>
                 @endif
 
-                {{-- Gradient overlay --}}
-                <div class="absolute inset-0"
-                     style="background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 55%)">
-                </div>
-
-                {{-- Rank badge --}}
-                <span class="absolute top-3 left-3 w-8 h-8 {{ $rankClass }} rounded-full
-                             flex items-center justify-center text-white text-xs font-bold shadow">
-                    {{ $i + 1 }}
-                </span>
-
-                {{-- Category badge --}}
-                <span class="absolute top-3 right-3 bg-white/90 text-orange-700 text-xs font-bold px-3 py-1 rounded-full">
-                    {{ $candidate->category->name }}
+                {{-- Badge kategori --}}
+                <span class="absolute top-2 left-2 bg-white/90 text-orange-700 text-xs font-bold px-2 py-0.5 rounded-full shadow">
+                    {{ $candidate->category->icon }} {{ $candidate->category->name }}
                 </span>
             </div>
 
             {{-- Body --}}
-            <div class="p-5">
-                <h3 class="font-bold text-gray-900 text-base mb-1">{{ $candidate->name }}</h3>
-                <p class="text-xs text-gray-400 mb-4">📍 {{ $candidate->origin }}</p>
+            <div class="p-4">
+                <h3 class="font-bold text-gray-900 text-sm mb-1 leading-snug">{{ $candidate->name }}</h3>
+                <p class="text-xs text-gray-400 mb-3">📍 {{ $candidate->origin }}</p>
 
                 {{-- Vote bar --}}
-                <div class="mb-4">
-                    <div class="flex justify-between text-xs text-gray-400 mb-1.5">
+                <div class="mb-3">
+                    <div class="flex justify-between text-xs text-gray-400 mb-1">
                         <span>{{ number_format($candidate->votes) }} suara</span>
                         <span>{{ $barPct }}%</span>
                     </div>
                     <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                        <div class="h-full rounded-full vote-bar-fill"
+                        <div class="h-full rounded-full"
                              style="width: {{ $barPct }}%;
-                                    background: linear-gradient(90deg, #F97316, #C2410C)">
+                                    background: linear-gradient(90deg, #F97316, #C2410C);
+                                    transition: width 0.6s ease">
                         </div>
                     </div>
                 </div>
 
-                {{-- Vote button --}}
+                {{-- Tombol Vote --}}
                 @if($isVoted)
                     <button disabled
-                            class="w-full py-2.5 rounded-xl text-sm font-bold border-2 border-blue-600
+                            class="mt-1 w-full py-2 rounded-xl text-sm font-bold border-2 border-blue-600
                                    bg-blue-600 text-white cursor-default">
                         ✓ Sudah Voted
                     </button>
                 @else
                     <button onclick="openVoteModal({{ $candidate->id }}, '{{ addslashes($candidate->name) }}', '{{ addslashes($candidate->origin) }}')"
-                            class="w-full py-2.5 rounded-xl text-sm font-bold border-2 border-orange-500
-                                   text-orange-500 hover:bg-orange-500 hover:text-white
-                                   transition-all duration-200 hover:scale-[1.02]">
-                        🗳️ Vote Sekarang
+                            class="mt-1 w-full py-2 rounded-xl text-sm font-bold border-2 border-[#ed8036]
+                                   text-[#ed8036] hover:bg-[#ed8036] hover:text-white
+                                   transition-all duration-200">
+                        🗳️ Vote
                     </button>
                 @endif
             </div>
@@ -316,6 +151,7 @@
         @endforeach
     </div>
     @endif
+
 </div>
 
 {{-- MODAL KONFIRMASI --}}
@@ -375,12 +211,10 @@ function closeVoteModal() {
     modal.style.display = 'none';
 }
 
-// Tutup modal saat klik overlay
 modal.addEventListener('click', function(e) {
     if (e.target === modal) closeVoteModal();
 });
 
-// Tutup modal dengan Escape
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeVoteModal();
 });
