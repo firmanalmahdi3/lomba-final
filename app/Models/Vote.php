@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Vote extends Model
 {
-    protected $fillable = ['candidate_id', 'voter_ip', 'voter_session'];
+    protected $fillable = ['candidate_id', 'voter_ip', 'voter_session', 'user_id', 'email'];
 
     public function candidate(): BelongsTo
     {
@@ -20,7 +20,7 @@ class Vote extends Model
     public static function hasVoted(int $candidateId, string $ip): bool
     {
         return static::where('candidate_id', $candidateId)
-                     ->where('voter_ip', $ip)
-                     ->exists();
+            ->where('voter_ip', $ip)
+            ->exists();
     }
 }

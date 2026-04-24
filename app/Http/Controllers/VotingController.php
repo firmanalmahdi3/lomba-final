@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Candidate;
-use App\Models\Category;
-use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+use App\Models\Vote;
+use App\Models\Category;
+use App\Models\Candidate;
 
 class VotingController extends Controller
 {
@@ -33,18 +34,25 @@ class VotingController extends Controller
         $candidates = $candidatesQuery->get();
         $categories = Category::all();
 
-        // Suara yang sudah diberikan user ini (berdasarkan IP)
-        $voterIp    = $request->ip();
-        $votedIds   = Vote::where('voter_ip', $voterIp)
-                          ->pluck('candidate_id')
-                          ->toArray();
+        // Suara yang sudah diberikan user ini (berdasarkan user_id jika login)
+        $votedIds = [];
+        if (auth()->check()) {
+            $votedIds = Vote::where('user_id', auth()->id())
+                ->pluck('candidate_id')
+                ->toArray();
+        }
 
         $totalVotes = Vote::count();
         $maxVotes   = Candidate::active()->max('votes') ?: 1;
 
         return view('voting.index', compact(
-            'candidates', 'categories', 'categoryId',
-            'sort', 'votedIds', 'totalVotes', 'maxVotes'
+            'candidates',
+            'categories',
+            'categoryId',
+            'sort',
+            'votedIds',
+            'totalVotes',
+            'maxVotes'
         ));
     }
 
@@ -53,11 +61,16 @@ class VotingController extends Controller
      */
     public function vote(Request $request, Candidate $candidate)
     {
+        if (!auth()->check()) {
+            return $this->voteResponse($request, false, 'Anda harus login untuk melakukan vote.');
+        }
+
         $request->validate([
             'candidate_id' => 'sometimes|integer|exists:candidates,id',
         ]);
 
         $voterIp = $request->ip();
+        $user = auth()->user();
 
         // Kandidat harus aktif
         if (! $candidate->is_active) {
@@ -65,23 +78,26 @@ class VotingController extends Controller
         }
 
         // Cek sudah vote atau belum
-        if (Vote::hasVoted($candidate->id, $voterIp)) {
-            return $this->voteResponse($request, false, 'Kamu sudah memberikan suara untuk kandidat ini.');
+        if (Vote::where('user_id', $user->id)->exists()) {
+            return $this->voteResponse($request, false, 'Kamu hanya dapat memberikan suara satu kali di festival ini.');
         }
 
         // Simpan dalam transaksi
-        DB::transaction(function () use ($candidate, $voterIp, $request) {
+        DB::transaction(function () use ($candidate, $voterIp, $request, $user) {
             Vote::create([
                 'candidate_id'  => $candidate->id,
                 'voter_ip'      => $voterIp,
                 'voter_session' => $request->session()->getId(),
+                'user_id'       => $user->id,
+                'email'         => $user->email,
             ]);
 
             $candidate->increment('votes');
         });
 
         return $this->voteResponse(
-            $request, true,
+            $request,
+            true,
             "Suaramu untuk {$candidate->name} berhasil dicatat! 🎉",
             $candidate->fresh()
         );
