@@ -57,7 +57,8 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         @foreach($candidates as $i => $candidate)
         @php
-            $isVoted   = in_array($candidate->id, $votedIds);
+            $hasVotedGlobally = count($votedIds) > 0;
+            $isVotedForThis = in_array($candidate->id, $votedIds);
             $barPct    = $maxVotes > 0 ? round(($candidate->votes / $maxVotes) * 100) : 0;
 
             // Ekstrak YouTube ID langsung di blade — tidak perlu accessor model
@@ -132,19 +133,34 @@
                 </div>
 
                 {{-- Tombol Vote --}}
-                @if($isVoted)
+                @if($isVotedForThis)
                     <button disabled
                             class="mt-1 w-full py-2 rounded-xl text-sm font-bold border-2 border-blue-600
                                    bg-blue-600 text-white cursor-default">
-                        ✓ Sudah Voted
+                        ✓ Pilihanmu
+                    </button>
+                @elseif($hasVotedGlobally)
+                    <button disabled
+                            class="mt-1 w-full py-2 rounded-xl text-sm font-bold border-2 border-gray-300
+                                   bg-gray-100 text-gray-400 cursor-not-allowed">
+                        Sudah Vote
                     </button>
                 @else
-                    <button onclick="openVoteModal({{ $candidate->id }}, '{{ addslashes($candidate->name) }}', '{{ addslashes($candidate->origin) }}')"
-                            class="mt-1 w-full py-2 rounded-xl text-sm font-bold border-2 border-[#ed8036]
-                                   text-[#ed8036] hover:bg-[#ed8036] hover:text-white
-                                   transition-all duration-200">
-                        🗳️ Vote
-                    </button>
+                    @auth
+                        <button onclick="openVoteModal({{ $candidate->id }}, '{{ addslashes($candidate->name) }}', '{{ addslashes($candidate->origin) }}')"
+                                class="mt-1 w-full py-2 rounded-xl text-sm font-bold border-2 border-[#ed8036]
+                                       text-[#ed8036] hover:bg-[#ed8036] hover:text-white
+                                       transition-all duration-200">
+                            🗳️ Vote
+                        </button>
+                    @else
+                        <button onclick="openLoginRequiredModal()"
+                                class="mt-1 w-full py-2 rounded-xl text-sm font-bold border-2 border-[#ed8036]
+                                       text-[#ed8036] hover:bg-[#ed8036] hover:text-white
+                                       transition-all duration-200">
+                            🗳️ Vote
+                        </button>
+                    @endauth
                 @endif
             </div>
         </div>
@@ -183,6 +199,32 @@
     </div>
 </div>
 
+{{-- MODAL LOGIN REQUIRED --}}
+<div id="login-modal"
+     class="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4"
+     style="display: none !important">
+    <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl"
+         style="animation: popIn 0.3s ease">
+        <div class="text-5xl mb-4">🔒</div>
+        <h2 class="font-display text-2xl font-black text-gray-900 mb-2">
+            Login Diperlukan
+        </h2>
+        <p class="text-gray-500 text-sm mb-6 leading-relaxed">
+            Kamu harus login terlebih dahulu untuk memberikan suara pada festival ini.
+        </p>
+        <div class="flex gap-3">
+            <button onclick="closeLoginModal()"
+                    class="flex-1 py-3 rounded-xl font-semibold text-sm border border-gray-200 hover:bg-gray-50 transition-colors">
+                Batal
+            </button>
+            <a href="{{ route('login') }}"
+                    class="flex-1 py-3 rounded-xl font-bold text-sm bg-blue-600 hover:bg-blue-700 text-white transition-colors inline-block text-center">
+                Login
+            </a>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @push('styles')
@@ -197,6 +239,7 @@
 @push('scripts')
 <script>
 const modal = document.getElementById('vote-modal');
+const loginModal = document.getElementById('login-modal');
 
 function openVoteModal(id, name, origin) {
     document.getElementById('modal-candidate-name').textContent = 'Vote untuk ' + name;
@@ -211,12 +254,28 @@ function closeVoteModal() {
     modal.style.display = 'none';
 }
 
+function openLoginRequiredModal() {
+    loginModal.style.removeProperty('display');
+    loginModal.style.display = 'flex';
+}
+
+function closeLoginModal() {
+    loginModal.style.display = 'none';
+}
+
 modal.addEventListener('click', function(e) {
     if (e.target === modal) closeVoteModal();
 });
 
+loginModal.addEventListener('click', function(e) {
+    if (e.target === loginModal) closeLoginModal();
+});
+
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeVoteModal();
+    if (e.key === 'Escape') {
+        closeVoteModal();
+        closeLoginModal();
+    }
 });
 </script>
 @endpush

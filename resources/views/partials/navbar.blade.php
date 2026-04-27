@@ -31,6 +31,19 @@
                         {{ $label }}
                     </a>
                 @endforeach
+                
+                @auth
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="ml-4 px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-xl transition-colors">
+                            Logout
+                        </button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="ml-4 px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors">
+                        Login
+                    </a>
+                @endauth
             </div>
 
             {{-- Mobile menu button --}}
@@ -49,6 +62,19 @@
                     {{ $label }}
                 </a>
             @endforeach
+            <hr class="my-2 border-gray-200">
+            @auth
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="w-full text-left block px-4 py-3 text-sm font-semibold text-red-600 hover:bg-red-50 rounded-lg">
+                        Logout
+                    </button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="block px-4 py-3 text-sm font-semibold text-blue-600 hover:bg-blue-50 rounded-lg">
+                    Login
+                </a>
+            @endauth
         </div>
     </div>
 </nav>

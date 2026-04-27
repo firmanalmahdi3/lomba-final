@@ -9,8 +9,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Candidate extends Model
 {
     protected $fillable = [
-        'name', 'origin', 'category_id', 'description',
-        'photo', 'emoji', 'bg_color', 'votes', 'is_active',
+        'name',
+        'origin',
+        'category_id',
+        'description',
+        'photo',
+        'youtube_url',
+        'emoji',
+        'bg_color',
+        'votes',
+        'is_active',
     ];
 
     protected $casts = [
