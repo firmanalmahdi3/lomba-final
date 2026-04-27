@@ -1,0 +1,133 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class CandidateSeeder extends Seeder
+{
+    public function run(): void
+    {
+        DB::table('candidates')->upsert([
+            [
+                'id' => 1,
+                'name' => 'Film Masyarakat 1',
+                'category_id' => 1,
+                'description' => 'Kebangkitan di Kota Blitar: Semangat – Potensi – Perjuangan Menuju Kota Masa Depan',
+                'youtube_url' => 'https://youtu.be/tSbTFH8gtXk?si=FvwTTNO6WdT7MhZw',
+                'emoji' => '🎬',
+                'votes' => 0,
+                'is_active' => true,
+                'created_at' => '2026-04-23 07:39:13',
+                'updated_at' => '2026-04-23 07:39:13',
+            ],
+            [
+                'id' => 2,
+                'name' => 'Film Masyarakat 2',
+                'category_id' => 1,
+                'description' => 'Kebangkitan di Kota Blitar: Semangat – Potensi – Perjuangan Menuju Kota Masa Depan',
+                'youtube_url' => 'https://youtu.be/NyMIhwxnngA?si=Y0lVCIn-utY1WU6u',
+                'emoji' => '🎬',
+                'votes' => 0,
+                'is_active' => true,
+                'created_at' => '2026-04-23 07:39:13',
+                'updated_at' => '2026-04-23 07:39:13',
+            ],
+            [
+                'id' => 3,
+                'name' => 'Film Masyarakat 3',
+                'category_id' => 1,
+                'description' => 'Kebangkitan di Kota Blitar: Semangat – Potensi – Perjuangan Menuju Kota Masa Depan',
+                'youtube_url' => 'https://youtu.be/ZnTDuHM-v_E?si=cDiY3IAugu9Gu_Tt',
+                'emoji' => '🎬',
+                'votes' => 0,
+                'is_active' => true,
+                'created_at' => '2026-04-23 07:39:13',
+                'updated_at' => '2026-04-23 07:39:13',
+            ],
+            [
+                'id' => 4,
+                'name' => 'Film Pelajar 1',
+                'category_id' => 2,
+                'description' => 'Ruang Digital Aman untuk Generasi Muda',
+                'youtube_url' => 'https://youtu.be/ZWQhRqYCwxA?si=YunA-MvWyBSk9Naa',
+                'emoji' => '🎬',
+                'votes' => 0,
+                'is_active' => true,
+                'created_at' => '2026-04-23 07:39:13',
+                'updated_at' => '2026-04-23 07:39:13',
+            ],
+            [
+                'id' => 5,
+                'name' => 'Film Pelajar 2',
+                'category_id' => 2,
+                'description' => 'Ruang Digital Aman untuk Generasi Muda',
+                'youtube_url' => 'https://youtu.be/pGalmqiGhVo?si=rtjW1cBDw6gf6uqi',
+                'emoji' => '🎬',
+                'votes' => 0,
+                'is_active' => true,
+                'created_at' => '2026-04-23 07:39:13',
+                'updated_at' => '2026-04-23 07:39:13',
+            ],
+            [
+                'id' => 6,
+                'name' => 'Film Pelajar 3',
+                'category_id' => 2,
+                'description' => 'Ruang Digital Aman untuk Generasi Muda',
+                'youtube_url' => 'https://youtu.be/G1_jpcoSJiE?si=8VsRrfqG11fw3TXp',
+                'emoji' => '🎬',
+                'votes' => 0,
+                'is_active' => true,
+                'created_at' => '2026-04-23 07:39:13',
+                'updated_at' => '2026-04-23 07:39:13',
+            ],
+            [
+                'id' => 7,
+                'name' => 'Film KIM 1',
+                'category_id' => 3,
+                'description' => 'Kebangkitan di Kota Blitar: Semangat – Potensi – Perjuangan Menuju Kota Masa Depan',
+                'youtube_url' => 'https://youtu.be/8HLgPaMN51E?si=yNspqiJi0uiTWnrf',
+                'emoji' => '🎬',
+                'votes' => 0,
+                'is_active' => true,
+                'created_at' => '2026-04-23 07:39:13',
+                'updated_at' => '2026-04-23 07:39:13',
+            ],
+            [
+                'id' => 8,
+                'name' => 'Film KIM 2',
+                'category_id' => 3,
+                'description' => 'Kebangkitan di Kota Blitar: Semangat – Potensi – Perjuangan Menuju Kota Masa Depan',
+                'youtube_url' => 'https://youtu.be/5oMh0iDcZG4?si=2eF-_Lg1zS06Syof',
+                'emoji' => '🎬',
+                'votes' => 0,
+                'is_active' => true,
+                'created_at' => '2026-04-23 07:39:13',
+                'updated_at' => '2026-04-23 07:39:13',
+            ],
+            [
+                'id' => 9,
+                'name' => 'Film KIM 3',
+                'category_id' => 3,
+                'description' => 'Kebangkitan di Kota Blitar: Semangat – Potensi – Perjuangan Menuju Kota Masa Depan',
+                'youtube_url' => 'https://youtu.be/3osS-Gz4pZE?si=rgAM6mGkWXRIcX36',
+                'emoji' => '🎬',
+                'votes' => 0,
+                'is_active' => true,
+                'created_at' => '2026-04-23 07:39:13',
+                'updated_at' => '2026-04-23 07:39:13',
+            ],
+        ], ['id'], [
+            'name',
+            'category_id',
+            'description',
+            'youtube_url',
+            'emoji',
+            'votes',
+            'is_active',
+            'created_at',
+            'updated_at',
+        ]);
+    }
+}
